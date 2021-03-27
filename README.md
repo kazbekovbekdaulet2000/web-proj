@@ -1,5 +1,5 @@
 # web-proj
-Team members:
+Team members:\
 Kazbekov Bekdaulet\
 Zhetkergenova Zhansaya\
 Polatbek Nurdaulet
