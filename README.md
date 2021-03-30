@@ -1,7 +1,7 @@
 # ProjectWeb
 Kazbekov Bekdaulet\
 Zhetkergenova Zhansaya\
-Polatbek Nurdaulet
+Sharmetov Nurdaulet
 
 
 ## Assistant
