@@ -8,12 +8,19 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
+import { LoginComponent } from './login/login.component';
+import { RegistrationComponent } from './registration/registration.component';
+import { MoviesComponent } from './movies/movies.component';
+import { ActorsComponent } from './actors/actors.component';
 
 
 const comp: Routes =[
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
   {path: 'about', component: AboutComponent},
+  {path: "movies", component: MoviesComponent},
+  {path: "actors", component: ActorsComponent},
+  {path: "login", component: LoginComponent},
   {path: "*", component: AppComponent} 
 ]
 
@@ -22,7 +29,11 @@ const comp: Routes =[
     AppComponent,
     HeaderComponent,
     HomeComponent,
-    AboutComponent
+    AboutComponent,
+    LoginComponent,
+    RegistrationComponent,
+    MoviesComponent,
+    ActorsComponent
   ],
   imports: [
     BrowserModule,

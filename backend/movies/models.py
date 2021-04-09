@@ -3,10 +3,11 @@ from django.db import models
 # from django.auth
 
 
-# class Categories(models.Model):
-#     name = models.CharField(max_length = 200)
-#     description = models.TextField(max_length = 1000)
-#     films = models.Fore
+class Genres(models.Model):
+    name = models.CharField(primary_key= True, max_length = 200)
+    description = models.TextField(max_length = 1000)
+    def __str__(self):
+        return self.name
 
 class Actor(models.Model):
     name = models.CharField(max_length = 50)
@@ -40,7 +41,7 @@ class Movies(models.Model):
     title = models.CharField(max_length = 100, null = False)
     year = models.IntegerField()
     description = models.CharField(max_length = 1000, null = True)
-    genres = models.CharField(max_length = 50, null = False)
+    genres = models.CharField(max_length = 100, null = True)
     budget = models.IntegerField(editable = True)
     rating = models.FloatField(blank = True, null = False)
     duration = models.IntegerField()

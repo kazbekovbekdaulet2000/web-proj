@@ -3,11 +3,10 @@ from django.urls import path, include
 from .views import *
 from rest_framework import routers
 
-# 
 
 urlpatterns = [
-    path('movies/', moviesView),
-    path('movies/<int:id>/', moviesDetail),
+    path('movies/', MoviesView.as_view()),
+    path('movies/<int:id>/', MoviesDetails.as_view()),
     path('actors/', actorsList),
     path('actors/<int:id>/', actorDetail),
     path('directors/', directorList),
