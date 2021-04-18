@@ -12,6 +12,9 @@ import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { MoviesComponent } from './movies/movies.component';
 import { ActorsComponent } from './actors/actors.component';
+import { FooterComponent } from './footer/footer.component';
+import { WishlistComponent } from './wishlist/wishlist.component';
+import { AccountComponent } from './account/account.component';
 
 
 const comp: Routes =[
@@ -21,6 +24,9 @@ const comp: Routes =[
   {path: "movies", component: MoviesComponent},
   {path: "actors", component: ActorsComponent},
   {path: "login", component: LoginComponent},
+  {path: "sign-up", component: RegistrationComponent},
+  {path: "wishlist", component: WishlistComponent},
+  {path: "account", component: AccountComponent},
   {path: "*", component: AppComponent} 
 ]
 
@@ -33,7 +39,10 @@ const comp: Routes =[
     LoginComponent,
     RegistrationComponent,
     MoviesComponent,
-    ActorsComponent
+    ActorsComponent,
+    FooterComponent,
+    WishlistComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule,

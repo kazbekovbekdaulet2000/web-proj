@@ -5,9 +5,7 @@ from .models import *
 class ActorSerizalizer(serializers.ModelSerializer):
     class Meta:
         model = Actor
-        fields =(
-            'name', 'birth_date', 'death_date', 'county', 'person_details', 'awards', 'award_nominations', 'link'
-        )
+        fields ='__all__'
 
 class DirectorSerizalizer(serializers.ModelSerializer):
     class Meta:
@@ -15,8 +13,19 @@ class DirectorSerizalizer(serializers.ModelSerializer):
         fields ='__all__'
 
 class MoviesSerizalizer(serializers.ModelSerializer):
-    # actor = serializers.StringRelatedField(many = False) #should be more than one actor
+    # actor = serializers.PrimaryKeyRelatedField(many = False) #should be more than one actor
     # director = serializers.StringRelatedField(many = False)
     class Meta:
         model = Movies
         fields ='__all__'
+
+class GenresSerializer(serializers.Serializer):
+    name = serializers.CharField(read_only = True)
+    description = serializers.CharField(read_only = True)
+    
+    def create(self, validated_data):
+        return Genres.objects.create(**validated_data)
+
+    def update(self, validated_data, instance):
+        instance.name = validated_data.get('name', instance.name)
+        instance.description = validated_data.get('description', instance.description)

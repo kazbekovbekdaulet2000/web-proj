@@ -8,10 +8,9 @@ body{
     width: calc(100%-400px);
     top: 0px;
     height:100vh;
-    background: radial-gradient(137.99% 178.52% at 107.15% -5.61%, rgba(255, 208, 208, 0.57) 10.47%, rgba(86, 114, 214, 0.27) 36.14%, rgba(233, 194, 234, 0.643106) 54.48%, rgba(255, 249, 117, 0.407644) 77.92%, rgba(196, 196, 196, 0) 100%);
-
-}
-
-a,p,h1,h2,h3,h4,h5,h6,li{
     font-family: 'Roboto', sans-serif;
+    background: radial-gradient(137.99% 178.52% at 107.15% -5.61%, rgba(255, 208, 208, 0.57) 10.47%, rgba(86, 114, 214, 0.27) 36.14%, rgba(233, 194, 234, 0.643106) 54.48%, rgba(255, 249, 117, 0.407644) 77.92%, rgba(196, 196, 196, 0) 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
+

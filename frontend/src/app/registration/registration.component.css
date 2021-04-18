@@ -1,0 +1,73 @@
+.form{
+    width:40%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 120px;
+    min-height: 200px;
+    min-width: 280px; 
+    background-color: #ffffff;
+    border-radius: 13px;
+    box-shadow: 0px 3px 50px rgba(0, 0, 0, 0.15);
+    transition: 0.3s;
+    padding: 30px;
+    transform: scale(1.02);
+}
+
+.form:hover{
+    transition: 0.3s;
+    box-shadow: 0px 3px 40px rgba(0, 0, 0, 0.25);
+}
+
+.title{
+    padding: 0px 50px;    
+}
+
+.login{
+    min-width: 280px;
+    width: 100%;
+    margin-top: 30px;
+    font-size: 18px;
+}
+
+.mail{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.mail input{
+    width: 100%;
+    height: 100%;
+    font-size: 24px;
+    padding-top: 25px;
+    border: none;
+    margin-bottom: 20px;
+    outline: none;
+    font-weight:lighter;
+}
+
+.mail label{
+    position:absolute;
+    bottom: 0px;
+    left:0%;
+    color:#303030;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    margin-bottom: 20px;
+    border-bottom: 1px solid black;
+}
+
+.content-name{
+    position:absolute;
+    bottom: 5px;
+    left: 0px;
+    transition: all 0.2s ease;
+}
+
+.mail input:focus + .label-mail .content-name,
+.mail input:valid + .label-mail .content-name{
+    transform: translateY(-150%);
+    font-size: 14px;
+    color:#4b4b4b;
+}

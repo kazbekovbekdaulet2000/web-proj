@@ -25,14 +25,19 @@ class MoviesView(APIView):
 
 
 class MoviesDetails(APIView):
-    
     def get(self, request, id):
-        movie = Movies.objects.get(movies_id = id)
+        try:
+            movie = Movies.objects.get(movies_id = id)
+        except Movies.DoesNotExist as e:
+            return Response({'message': str(e)}, status = 400)
         serializer = MoviesSerizalizer(movie, many = False)
         return Response(serializer.data)
 
     def put(self, request, id):
-        movie = Movies.objects.get(movies_id = id)
+        try:
+            movie = Movies.objects.get(movies_id = id)
+        except Movies.DoesNotExist as e:
+            return Response({'message': str(e)}, status = 400)
         serializer = MoviesSerizalizer(movie, data = request.data)
         if serializer.is_valid():
             serializer.save()
@@ -40,7 +45,10 @@ class MoviesDetails(APIView):
         return Response(serializer.error, status = status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, id):
-        movie = Movies.objects.get(movies_id = id)
+        try:
+            movie = Movies.objects.get(movies_id = id)
+        except Movies.DoesNotExist as e:
+            return Response({'message': str(e)}, status = 400)
         movie.delete()
         return Response(status = status.HTTP_204_NO_CONTENT)
 
@@ -56,7 +64,6 @@ def actorDetail(request, id):
     actor = Actor.objects.get(id = id)
     serializer = ActorSerizalizer(actor, many = False)
     return Response(serializer.date)
-
 
 # Director
 @api_view(["GET"])

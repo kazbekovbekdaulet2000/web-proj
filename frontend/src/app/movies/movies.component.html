@@ -1,1 +1,8 @@
-<p>movies works!</p>
+<h2> Movies </h2>
+<div class = 'block-holder'> 
+    <div class = 'blocks' *ngFor = "let movie of movies"> 
+        <div class = 'movies'> 
+            <h2> {{movie.title}} </h2>
+        </div>
+    </div>
+</div>

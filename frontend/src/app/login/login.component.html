@@ -1,1 +1,27 @@
-<p>login works!</p>
+<div class = "back">
+    <svg width="50" height="30" viewBox="0 0 54 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1.23693 16.7518C0.260622 17.7281 0.260622 19.311 1.23693 20.2873L17.1468 36.1972C18.1231 37.1735 19.7061 37.1735 20.6824 36.1972C21.6587 35.2209 21.6587 33.638 20.6824 32.6617L6.54023 18.5195L20.6824 4.3774C21.6587 3.40108 21.6587 1.81817 20.6824 0.841862C19.7061 -0.134449 18.1231 -0.134449 17.1468 0.841862L1.23693 16.7518ZM53.0047 16.0195L3.0047 16.0195V21.0195L53.0047 21.0195V16.0195Z" fill="black"/>
+        </svg>        
+</div>
+<div class = 'form'>
+    <div class = 'title'>
+        <h2> Sign in </h2> 
+    </div>
+    <form class = 'login'>
+        <div class = 'mail'>
+            <input name = "Email" type = 'text' autocomplete = 'off' required> 
+            <label for = "Email" class = "label-mail">
+                <span class = "content-name"> E-mail or username</span>
+            </label>
+        </div>
+        <div class = 'mail'>
+            <input name = "Email" type = 'password' autocomplete = 'off' required> 
+            <label for = "Email" class = "label-mail">
+                <span class = "content-name"> Password</span>
+            </label> 
+        </div>
+        <div class = "enter"><h3> Log in </h3></div>
+        <div class = "forgot-pass"><a [routerLink] = '["/sign-up"]'> Forgot password </a></div>
+        <div class = "create-acc"><a [routerLink] = '["/sign-up"]'> Create new account</a></div>
+    </form>
+</div>

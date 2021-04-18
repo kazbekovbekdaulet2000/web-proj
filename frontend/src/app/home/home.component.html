@@ -1,18 +1,12 @@
 
-<!-- <div class = 'slider'>  
-</div> -->
+<div class = 'slider'>  
+</div>
 
-<h2> Movies </h2>
-<li *ngFor = "let movie of movies"> 
-    {{ movie.title}}
-</li>
 
-<h2> Actors </h2>
-<li *ngFor = "let actor of actors"> 
-    {{ actor.name }}    
-</li>
-
-<h2> Directors </h2>
-<li *ngFor = "let director of directors"> 
-    {{ director.name }}    
-</li>
+<div class = 'block-holder'> 
+    <div class = 'blocks' *ngFor = "let movie of movies"> 
+        <div class = 'movies'> 
+            <h2> {{movie.title}} </h2>
+        </div>
+    </div>
+</div>
