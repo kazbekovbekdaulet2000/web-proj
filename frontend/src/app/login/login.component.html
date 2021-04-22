@@ -9,19 +9,23 @@
     </div>
     <form class = 'login'>
         <div class = 'login-sign-up-content'>
-            <input name = "Email" type = 'text' autocomplete = 'off' required> 
+            <input name = "Email" type = 'text' autocomplete = 'off' [(ngModel)]="user.username"  required > 
             <label for = "Email" class = "label-mail">
                 <span class = "content-name"> E-mail or username</span>
             </label>
         </div>
         <div class = 'login-sign-up-content'>
-            <input name = "Email" type = 'password' autocomplete = 'off' required> 
+            <input name = "Email" type = 'password' autocomplete = 'off' [(ngModel)]="user.password" required> 
             <label for = "Email" class = "label-mail">
                 <span class = "content-name"> Password</span>
             </label> 
         </div>
-        <div class = "enter"><h3> Log in </h3></div>
-        <div class = "forgot-pass"><a [routerLink] = '["/sign-up"]'> Forgot password </a></div>
+        <div class = "enter" (click) = "login()"><h3> Log in </h3></div>
+        <div class = "forgot-pass"><a [routerLink] = '["/reset-password"]'> Forgot password </a></div>
         <div class = "create-acc"><a [routerLink] = '["/sign-up"]'> Create new account</a></div>
     </form>
 </div>
+
+<div class="row" >
+    <!-- You are logged in as {{ auth.username }}.      Token Expires: {{ auth.token }} -->
+  </div>

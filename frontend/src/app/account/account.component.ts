@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-account',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccountComponent implements OnInit {
 
-  constructor() { }
+  constructor( private auth: AuthService,
+              private route: Router) { }
 
   ngOnInit(): void {
+  }
+
+  isLoged(){
+    return localStorage.getItem('token') !=null ;
+  }
+
+  logout(){
+    this.auth.logout();
+    this.route.navigate(['home']);
   }
 
 }

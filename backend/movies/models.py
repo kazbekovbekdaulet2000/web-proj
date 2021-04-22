@@ -1,6 +1,5 @@
 from django.db import models
-
-# from django.auth
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 class Actor(models.Model):
     name = models.CharField(max_length = 50)
@@ -18,6 +17,7 @@ class Actor(models.Model):
     class Meta: 
         verbose_name = "Actor"
         verbose_name_plural = "Actors"
+
 
 class Genres(models.Model):
     name = models.CharField(primary_key= True, max_length = 200)
@@ -51,15 +51,15 @@ class Movies(models.Model):
     title = models.CharField(max_length = 100, null = False)
     year = models.IntegerField()
     description = models.CharField(max_length = 1000, null = True)
-    genres = models.ManyToManyField(Genres, null = True)
+    genres = models.ForeignKey(Genres, on_delete = models.SET_NULL, null = True)
     budget = models.IntegerField(editable = True, null = True, blank = True)
     rating = models.FloatField(blank = True, null = False)
     duration = models.IntegerField()
     county = models.CharField(max_length = 50, null = False)
     likes = models.IntegerField(blank=True, null = False, default = 0)
     poster = models.URLField(null = False)
-    director = models.ForeignKey(Director, models.CASCADE, '+', null =True, blank = True)
-    actors = models.ManyToManyField(Actor, null = True, blank = True)
+    director = models.ForeignKey(Director, models.SET_NULL,null =True, blank = True)
+    actors = models.ForeignKey(Actor, models.SET_NULL, null = True, blank = True)
     
     def __str__(self):
         return self.title

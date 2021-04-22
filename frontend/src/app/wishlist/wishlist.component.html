@@ -1,1 +1,3 @@
-<p>wishlist works!</p>
+<h3 *ngIf = "!isLogged()"> To add items to wishlist Login or Register</h3>
+<div *ngIf = "!isLogged()" class = "enter" [routerLink] = '["/login"]'> Login </div>
+<div *ngIf = "!isLogged()" class = "enter" [routerLink] = '["/sign-up"]'> Register </div> 

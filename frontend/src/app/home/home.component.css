@@ -12,6 +12,7 @@
     border-radius: 13px;
     transition: 0.3s;
     display: block;
+    overflow: hidden;
 }
 
 .slider-content{

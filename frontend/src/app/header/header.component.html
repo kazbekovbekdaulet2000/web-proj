@@ -1,4 +1,4 @@
-<div class = "header" *ngIf="router.url !== '/login' && router.url !== '/sign-up'">
+<div class = "header" *ngIf="router.url !== '/login' && router.url !== '/sign-up' && router.url !== '/reset-password'">
     <div class = "link">
         <svg class = 'svg' width="26" height="20" viewBox="0 0 26 20" fill="none" xmlns="http://www.w3.org/2000/svg">
             <line x1="1" y1="1" x2="25" y2="1" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -13,10 +13,9 @@
 
     <div class = 'user_block'>
         <div class = 'wishlist'><p [routerLink] = '["/wishlist"]'> My wishlist</p></div>
-        <a [routerLink] = '["/login"]'> User name </a>
+        <a [routerLink] = '["/login"]' *ngIf="!isLoged()"> Login </a>
+        <a [routerLink] = '["/account"]' *ngIf="isLoged()"> User name </a>
         <div class = "icon-holder"> </div>    
         
     </div>
-    <!-- <div class = "catalog">
-    </div>    -->
 </div>

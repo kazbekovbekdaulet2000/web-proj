@@ -91,7 +91,7 @@ body{
 .login{
     min-width: 280px;
     width: 100%;
-    margin-top: 30px;
+    margin-top: 15px;
     font-size: 18px;
 }
 
@@ -132,7 +132,7 @@ body{
     left: 0px;
     transition: all 0.2s ease;
 }
-
+/* Сдвиг текста */
 .login-sign-up-content input:focus + .label-mail .content-name,
 .login-sign-up-content input:valid + .label-mail .content-name{
     transform: translateY(-150%);

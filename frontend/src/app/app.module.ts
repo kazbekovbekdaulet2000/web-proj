@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import {Routes, RouterModule} from '@angular/router';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -11,10 +11,16 @@ import { AboutComponent } from './about/about.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { MoviesComponent } from './movies/movies.component';
+import { MoviesDetailComponent} from './movies-detail/movies-detail.component'
 import { ActorsComponent } from './actors/actors.component';
 import { FooterComponent } from './footer/footer.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { AccountComponent } from './account/account.component';
+import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
+import { AuthService } from './services/auth.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { JwtModule } from '@auth0/angular-jwt';
+import { AuthInterceptor } from './services/AuthInterceptop';
 
 
 const comp: Routes =[
@@ -22,9 +28,11 @@ const comp: Routes =[
   {path: 'home', component: HomeComponent},
   {path: 'about', component: AboutComponent},
   {path: "movies", component: MoviesComponent},
+  {path: "movies/:id", component: MoviesDetailComponent},
   {path: "actors", component: ActorsComponent},
   {path: "login", component: LoginComponent},
   {path: "sign-up", component: RegistrationComponent},
+  {path: "reset-password", component: ResetpasswordComponent},
   {path: "wishlist", component: WishlistComponent},
   {path: "account", component: AccountComponent},
   {path: "*", component: AppComponent} 
@@ -42,15 +50,35 @@ const comp: Routes =[
     ActorsComponent,
     FooterComponent,
     WishlistComponent,
-    AccountComponent
+    AccountComponent,
+    ResetpasswordComponent,
+    MoviesDetailComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    RouterModule.forRoot(comp)
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule.forRoot(comp),
+    JwtModule.forRoot({
+      config:{
+        tokenGetter:() => {
+          return localStorage.getItem('token');
+        },
+        allowedDomains: ['localhost:4200'],
+        disallowedRoutes:[]
+      }
+    }),
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

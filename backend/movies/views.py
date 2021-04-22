@@ -5,10 +5,12 @@ from rest_framework.decorators import api_view
 from .models import *
 from .serializers import *
 from rest_framework.permissions import IsAuthenticated
+from django.contrib.auth.forms import UserCreationForm
 from rest_framework import status
 
+
 class MoviesView(APIView):
-    # permission_classes = (IsAuthenticated,) #5dd3a77adb1333cc82f8ba171945c19d4afd076d:admin
+    permission_classes = (IsAuthenticated, )
 
     def get(self, request):
         movies = Movies.objects.all()
@@ -77,3 +79,8 @@ def directorDetail(request, id):
     director = Director.objects.get(id = id)
     serializer = DirectorSerizalizer(director, many = False)
     return Response(serializer.date)
+
+
+
+def signUp(request):
+    return

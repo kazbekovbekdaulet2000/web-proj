@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceService } from '../services/service.service'
+import { AuthService } from '../services/auth.service'
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -9,7 +11,8 @@ export class HomeComponent implements OnInit {
   movies: any  
   actors: any
   directors: any 
-  constructor(private service: ServiceService) { }
+  constructor(private service: ServiceService,
+            private auth: AuthService) { }
   ngOnInit(): void {
     this.getMovies()
     this.getActors()

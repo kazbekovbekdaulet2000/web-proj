@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-wishlist',
@@ -10,6 +11,10 @@ export class WishlistComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  isLogged(){
+    return AppComponent.isLogged();
   }
 
 }

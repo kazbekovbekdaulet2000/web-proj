@@ -1,1 +1,3 @@
-<p>account works!</p>
+<div *ngIf= "isLoged()" class = "enter" (click) = 'logout()'> Logout </div>
+<div *ngIf = "!isLoged()" class = "enter" [routerLink] = '["/login"]'> Login </div>
+<div *ngIf = "!isLoged()" class = "enter" [routerLink] = '["/sign-up"]'> Register </div> 

@@ -9,41 +9,41 @@
     </div>
     <form class = 'login'>
         <div class = 'login-sign-up-content'>
-            <input name = "Email" type = 'text' autocomplete = 'off' required> 
+            <input name = "Email" type = 'text' autocomplete = 'off' required [(ngModel)] = "user.email"> 
             <label for = "Email" class = "label-mail">
                 <span class = "content-name"> E-mail</span>
             </label>
         </div>
         <div class = 'login-sign-up-content'>
-            <input name = "Email" type = 'text' autocomplete = 'off' required> 
+            <input name = "Email" type = 'text' autocomplete = 'off' required [(ngModel)] = "user.name"> 
             <label for = "Email" class = "label-mail">
                 <span class = "content-name"> Name</span>
             </label> 
         </div>
         <div class = 'login-sign-up-content'>
-            <input name = "Email" type = 'text' autocomplete = 'off' required> 
+            <input name = "Email" type = 'text' autocomplete = 'off' required [(ngModel)] = "user.surname"> 
             <label for = "Email" class = "label-mail">
                 <span class = "content-name"> Surname</span>
             </label> 
         </div>
         <div class = 'login-sign-up-content'>
-            <input name = "Email" type = 'text' autocomplete = 'off' required> 
+            <input name = "Email" type = 'text' autocomplete = 'off' required [(ngModel)] = "user.username"> 
             <label for = "Email" class = "label-mail">
                 <span class = "content-name"> User name</span>
             </label> 
         </div>
         <div class = 'login-sign-up-content'>
-            <input name = "Email" type = 'password' autocomplete = 'off' required> 
+            <input name = "Email" type = 'password' autocomplete = 'off' required [(ngModel)] = "user.password"> 
             <label for = "Email" class = "label-mail">
                 <span class = "content-name"> Password</span>
             </label> 
         </div>
         <div class = 'login-sign-up-content'>
-            <input name = "Email" type = 'password' autocomplete = 'off' required> 
+            <input name = "Email" type = 'password' autocomplete = 'off' required [(ngModel)] = "user.password2"> 
             <label for = "Email" class = "label-mail">
                 <span class = "content-name"> Type password again</span>
             </label> 
         </div>  
-        <div class = "enter"><h3> Sign up </h3></div>
+        <div (click) = "signup()" class = "enter"><h3> Sign up </h3></div>
     </form>
 </div>
