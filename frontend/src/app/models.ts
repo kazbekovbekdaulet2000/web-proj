@@ -16,9 +16,23 @@ export interface User{
     password2: string;
 }
 
+    // name = models.CharField(max_length = 50)
+    // birth_date = models.DateField(null = True, blank = True)
+    // death_date = models.DateField(null = True, blank = True)
+    // county = models.CharField(max_length = 50)
+    // person_details = models.CharField(max_length = 1000)
+    // awards = models.CharField(max_length = 50)
+    // award_nominations =models.CharField(max_length = 50)
+    // link
 export interface Actor{
     name: string;
+    birth_date: Date;
+    death_date: Date;
     surname: string;
+    person_details: string;
+    awards: string;
+    award_nominations: string;
+    link: string;
 }
 export interface Genres{
     name: string;

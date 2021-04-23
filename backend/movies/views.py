@@ -24,8 +24,6 @@ class MoviesView(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
-
 class MoviesDetails(APIView):
     def get(self, request, id):
         try:
@@ -54,7 +52,6 @@ class MoviesDetails(APIView):
         movie.delete()
         return Response(status = status.HTTP_204_NO_CONTENT)
 
-
 @api_view(["GET"])
 def actorsList(request):
     actors = Actor.objects.all()
@@ -67,7 +64,6 @@ def actorDetail(request, id):
     serializer = ActorSerizalizer(actor, many = False)
     return Response(serializer.date)
 
-# Director
 @api_view(["GET"])
 def directorList(request):
     directors = Director.objects.all()
@@ -79,8 +75,3 @@ def directorDetail(request, id):
     director = Director.objects.get(id = id)
     serializer = DirectorSerizalizer(director, many = False)
     return Response(serializer.date)
-
-
-
-def signUp(request):
-    return

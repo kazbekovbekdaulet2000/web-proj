@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
     this.auth.login(this.user).subscribe(
       data=>{
         localStorage.setItem('token', data.token);
-        this.goBack();
+        this.goBack();  
       },
       error=>{
         alert("Unable to log in with provided credentials");

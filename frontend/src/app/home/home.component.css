@@ -39,9 +39,9 @@ h1{
 }
 
 .block-holder{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+    display: grid;
+    width: 100%;
+    grid-template-columns: auto auto auto auto;
     margin: 0px -20px;
 }
 
@@ -50,7 +50,7 @@ h1{
     background-color: #ffffff;
     width: 30%;
     max-width: 560px;
-    min-width: 280px;
+    min-width: 250px;
     margin: 20px;
     margin-top: 50px;
     min-height: 100px;

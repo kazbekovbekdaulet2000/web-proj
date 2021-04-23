@@ -1,1 +1,8 @@
-<p>actors works!</p>
+<div class = 'block-holder'>
+    <div class = 'blocks' *ngFor = "let actor of actors" > 
+        <div class = 'actor' routerLink="{{actor.id}}">
+            <img [src]="actor.photo" class = 'photo'>
+            <h3> {{actor.name}} </h3>
+        </div> 
+    </div>
+</div>

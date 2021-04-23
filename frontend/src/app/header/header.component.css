@@ -41,12 +41,14 @@
   outline: none;
   border: none;
   box-shadow: 0px 4px 32px rgba(0, 0, 0, 0.15);
+  outline: none;
 }
 
 .wishlist p{
   padding: 5px;
   margin: auto;
   font-size: 16px;
+  outline: none;
 }
 
 .wishlist:hover{

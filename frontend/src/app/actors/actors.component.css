@@ -1,0 +1,24 @@
+
+.block-holder{
+    display: grid;
+    width: 100%;
+    grid-template-columns: auto auto auto auto;
+    margin: 0px -20px;
+}
+
+.blocks{
+    background-color: #ffffff;
+    width: 250px;
+    margin: 20px;
+    margin-top: 50px;
+    overflow: hidden;
+    min-height: 100px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 32px rgba(0, 0, 0, 0.15);
+    transition: 0.3s;
+}
+
+.blocks:hover{
+    transition: 0.3s;
+    box-shadow: 0px 4px 32px rgba(0, 0, 0, 0.45);
+}

@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http'; 
 import { Observable } from 'rxjs';
 import { AuthService} from './auth.service'
-import { Movie } from '../models';
+import { Actor, Movie } from '../models';
+import { AotCompiler } from '@angular/compiler';
 @Injectable({
   providedIn: 'root'
 })
@@ -30,12 +31,12 @@ export class ServiceService{
     return this.http.get<Movie>(this.apiURL + "movies/" + movies_id);
   }
   
-  getActors(){
-    return this.http.get(this.apiURL + "actors/");
+  getActors():Observable<Actor[]>{
+    return this.http.get<Actor[]>(this.apiURL + "actors/");
   }
 
-  getDirectors(){
-    return this.http.get(this.apiURL + "directors/");
+  getDirectors(): Observable<Actor>{
+    return this.http.get<Actor>(this.apiURL + "directors/");
   }
 }
 

@@ -112,6 +112,7 @@ body{
     margin-bottom: 20px;
     outline: none;
     font-weight:lighter;
+    background: transparent;
 }
 
 .login-sign-up-content label{

@@ -1,11 +1,20 @@
-<h2> Movies </h2>
-<div class = 'block-holder'> 
+<h1> All Movies</h1>
+<div claas= 'search'>
+    <div class = 'login-sign-up-content'>
+        <input name = "Email" type = 'text' autocomplete = 'off' required > 
+        <label for = "Email" class = "label-mail">
+            <span class = "content-name"> Search </span>
+        </label>
+    </div>
+    <button class = 'search'> 
+        <h3>Search</h3></button>
+</div>
+<div class = 'block-holder'>
     <div class = 'blocks' *ngFor = "let movie of movies" > 
         <div class = 'movies' routerLink="{{movie.movies_id}}">
-             
-            <img [src]="movie.poster" style= "width: 100px;">
-            <h2> {{movie.title}} </h2>
-            <h3>{{ movie.movies_id }}</h3>
+            <img [src]="movie.poster" class = 'poster'>
+            <!-- <h2> {{movie.title}} </h2>
+            <h3>{{ movie.movies_id }}</h3> -->
         </div> 
     </div>
 </div>
