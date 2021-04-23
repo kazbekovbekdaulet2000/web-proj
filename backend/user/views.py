@@ -2,11 +2,12 @@ from django.shortcuts import render
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from .serializer import AccountSerializer
+# from .serializer import AccountSerializer
 from .models import Account
+from .serializer import AccountSerializer
 
 
-@api_view(['POST', 'GET'])
+@api_view(['POST'])
 def register_view(request):
     if request.method == "POST":
         serializer = AccountSerializer(data = request.data)
@@ -17,8 +18,3 @@ def register_view(request):
         else:
             data = serializer.errors
         return Response(data)
-    # if request.method == "GET":
-    #     user = Account.objects.get(id)
-    #     serializer = AccountSerializer(data = user)
-    #     if serializer.is_valid():
-
