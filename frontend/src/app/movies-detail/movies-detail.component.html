@@ -7,7 +7,7 @@
             <h2> Movie name :</h2>
             <h2> {{movie.title}}</h2>
         </div>
-        <div class = 'info-row' *ngIf ='isnull(movie.year)' >
+        <div class = 'info-row' *ngIf ='isnull(movie.county)' >
             <h4> country :</h4>
             <h4> {{movie.county}}</h4>
         </div>
@@ -15,33 +15,33 @@
             <h4> year :</h4>
             <h4> {{movie.year}}</h4>
         </div>
-        <div class = 'info-row' *ngIf ='isnull(movie.year)'>
+        <div class = 'info-row' *ngIf ='isnull(movie.genres)'>
             <h4> genres :</h4>
             <h4> {{movie.genres}}</h4>
         </div>
         
-        <div class = 'info-row' *ngIf ='isnull(movie.year)' >
+        <div class = 'info-row' *ngIf ='isnull(movie.budget)' >
             <h4> budget :</h4>
             <h4> {{movie.budget}} $</h4>
         </div>
-        <div class = 'info-row' *ngIf ='isnull(movie.year)'>
+        <div class = 'info-row' *ngIf ='isnull(movie.duration)'>
             <h4> duration :</h4>
             <h4> {{movie.duration}} min</h4>
         </div>
-        <div class = 'info-row' *ngIf ='isnull(movie.year)'>
+        <div class = 'info-row' *ngIf ='isnull(movie.director)'>
             <h4> director :</h4>
             <h4> {{movie.director}}</h4>
         </div>
-        <div class = 'info-row' *ngIf ='isnull(movie.year)'>
+        <div class = 'info-row' *ngIf ='isnull(movie.actors)'>
             <h4> actors :</h4>
             <h4> {{movie.actors}}</h4>
         </div>
-        <div class = 'info-row' *ngIf ='isnull(movie.year)'>
+        <div class = 'info-row' *ngIf ='isnull(movie.rating)'>
             <h4> rating :</h4>
             <h4> {{movie.rating}}</h4>
         </div>
         
-        <div class = 'info-row' *ngIf ='isnull(movie.year)'>
+        <div class = 'info-row' *ngIf ='isnull(movie.description)'>
             <h4> description :</h4>
             <h4> {{movie.description}}</h4>
         </div>

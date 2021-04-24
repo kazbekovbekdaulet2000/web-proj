@@ -28,6 +28,7 @@
 }
 
 .movie-info{
+    position: relative;
     min-width: 500px;
     background-color: #ffffff;
     border-radius: 13px;
@@ -46,8 +47,9 @@ h2,h3,h4,h5,h6{
 }
 
 .like-button{
-    justify-content: flex-end;
-    display: flex;
-    margin-top: 73px;
-    margin-bottom: 0px;
+    position:absolute;
+
+    bottom: 20px;
+    right: 20px;
+
 }

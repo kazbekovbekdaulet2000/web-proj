@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppComponent } from '../app.component';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-wishlist',
@@ -8,7 +9,7 @@ import { AppComponent } from '../app.component';
 })
 export class WishlistComponent implements OnInit {
 
-  constructor() { }
+  constructor(private location: Location,) { }
 
   ngOnInit(): void {
   }
@@ -16,6 +17,7 @@ export class WishlistComponent implements OnInit {
   isLogged(){
     return AppComponent.isLogged();
   }
-
-
+  goBack(){
+    this.location.back();
+  }
 }

@@ -32,7 +32,8 @@ export class MoviesDetailComponent implements OnInit {
   }
 
   isnull(data){
-    return true;
+    // console.log(this.movie);
+    return data != null;
   }
 
   like(){
