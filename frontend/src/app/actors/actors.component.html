@@ -1,3 +1,14 @@
+<h1> Actors </h1>
+<div class= 'search-div'>
+    <div class = 'login-sign-up-content'>
+        <input name = "Email" type = 'text' autocomplete = 'off' required > 
+        <label for = "Email" class = "label-mail">
+            <span class = "content-name"> Search </span>
+        </label>
+    </div>
+    <button class = 'search'> 
+        <h3>Search</h3></button>
+</div>
 <div class = 'block-holder'>
     <div class = 'blocks' *ngFor = "let actor of actors" > 
         <div class = 'actor' routerLink="{{actor.id}}">

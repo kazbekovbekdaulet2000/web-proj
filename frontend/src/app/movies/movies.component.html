@@ -13,8 +13,10 @@
     <div class = 'blocks' *ngFor = "let movie of movies" > 
         <div class = 'movies' routerLink="{{movie.movies_id}}">
             <img [src]="movie.poster" class = 'poster'>
-            <!-- <h2> {{movie.title}} </h2>
-            <h3>{{ movie.movies_id }}</h3> -->
+            <div class = "blur"></div>
+            <div class = 'blur-text'> 
+                <h1> {{movie.title}} </h1>
+            </div>
         </div> 
     </div>
 </div>

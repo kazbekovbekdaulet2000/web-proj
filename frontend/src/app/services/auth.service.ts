@@ -13,7 +13,7 @@ export class AuthService {
   constructor(private http: HttpClient) {}
   
   login(user:AuthData): Observable<AuthToken>{
-    return this.http.post<AuthToken>(this.URL+'/api/token/', {
+    return this.http.post<AuthToken>(this.URL+'/api/account/token/', {
         email: user.username,
         password: user.password
       }

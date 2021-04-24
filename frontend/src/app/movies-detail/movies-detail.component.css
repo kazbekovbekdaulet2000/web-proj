@@ -1,0 +1,53 @@
+.photo-holder{
+    display: grid;
+    margin: 50px;
+    max-width: 1920px;
+    grid-template-columns: 35% 62.5%;
+    justify-content: start;
+    column-gap: 2.5%;
+}
+
+.photo{
+    padding:0px;    
+    flex-wrap: wrap;
+    background-color: #ffffff;
+    min-width: 250px;
+    overflow: hidden;
+    min-height: 100px;
+    border-radius: 15px;
+    max-height: 550px;
+    box-shadow: 0px 4px 32px rgba(0, 0, 0, 0.15);
+    transition: 0.3s;
+}
+
+.poster{    
+    width: 105%;
+    max-height: 550px;
+    object-fit: cover;
+    transition: 0.3s;
+}
+
+.movie-info{
+    min-width: 500px;
+    background-color: #ffffff;
+    border-radius: 13px;
+    padding: 20px;
+
+}
+
+.info-row{
+    display: grid;
+    grid-template-columns: 200px auto;
+    padding: 0px;
+}
+
+h2,h3,h4,h5,h6{
+    margin: 10px;
+}
+
+.like-button{
+    justify-content: flex-end;
+    display: flex;
+    margin-top: 73px;
+    margin-bottom: 0px;
+}

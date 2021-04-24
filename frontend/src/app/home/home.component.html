@@ -1,12 +1,36 @@
-
 <div class = 'slider'>  
+    <img src= "https://cdn.mos.cms.futurecdn.net/Tmr5QSQ5TsMHNLfjAa5Z9U-1024-80.jpeg.webp">
+    <div class = "slider-blur"></div>
+    <div class = 'text-place'>
+        <h3> Justice League </h3>
+        <p> Zack Snyder </p>
+    </div>
 </div>
 
 
+<h2 class = "header-text" *ngIf="movies.length != 0"> Top Movies </h2>
+<div class = 'line'  *ngIf="movies.length != 0"> </div>
 <div class = 'block-holder'> 
     <div class = 'blocks' *ngFor = "let movie of movies"> 
-        <div class = 'movies'> 
-            <h2> {{movie.title}} </h2>
-        </div>
+        <div class = 'movies' [routerLink]="['movies', movie.movies_id]">
+            <img [src]="movie.poster" class = 'poster'>
+            <div class = "blur"></div>
+            <div class = 'blur-text'> 
+                <h3> {{movie.title}} </h3>
+            </div>
+        </div> 
+    </div>
+</div>
+<h2 class = "header-text" *ngIf="actors.length != 0"> Most viewed Actors </h2>
+<div class = 'line' *ngIf="actors.length != 0"> </div>
+<div class = 'block-holder'> 
+    <div class = 'blocks' *ngFor = "let actor of actors"> 
+        <div class = 'movies'>
+            <img src ="http://assets.stickpng.com/images/585e4bf3cb11b227491c339a.png" class = 'poster'>
+            <div class = "blur"></div>
+            <div class = 'blur-text'> 
+                <h3> {{actor.name}} </h3>
+            </div>
+        </div> 
     </div>
 </div>

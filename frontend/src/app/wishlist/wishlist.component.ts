@@ -17,4 +17,5 @@ export class WishlistComponent implements OnInit {
     return AppComponent.isLogged();
   }
 
+
 }

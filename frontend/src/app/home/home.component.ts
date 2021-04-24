@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceService } from '../services/service.service'
 import { AuthService } from '../services/auth.service'
+import { Actor, Movie } from '../models';
 
 @Component({
   selector: 'app-home',
@@ -8,8 +9,8 @@ import { AuthService } from '../services/auth.service'
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  movies: any  
-  actors: any
+  movies: Movie[]; 
+  actors: Actor[];
   directors: any 
   constructor(private service: ServiceService,
             private auth: AuthService) { }

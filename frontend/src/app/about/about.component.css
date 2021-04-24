@@ -1,0 +1,12 @@
+.about{
+    width: 100%;
+    height: 500px;
+    background-color: #ffffff;
+    border-radius: 13px;
+    box-shadow: 3px 0px 23px #cccccc;
+    padding: 30px;
+}
+
+.about div{
+    margin-left: 50px;
+}

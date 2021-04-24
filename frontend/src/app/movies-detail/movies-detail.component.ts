@@ -11,15 +11,16 @@ import { ServiceService } from '../services/service.service';
 export class MoviesDetailComponent implements OnInit {
 
   movie: Movie;
+  isLiked: Boolean;
   constructor(private service: ServiceService,
               private route: ActivatedRoute) { }
-
+  
   ngOnInit(): void {
     this.route.paramMap.subscribe((movie)=>{
     const id = +movie.get('id');
-    console.log(id);
     this.getMovie(id);
   })
+    this.isLiked = false;
   }
 
   getMovie(id: number){
@@ -28,6 +29,18 @@ export class MoviesDetailComponent implements OnInit {
         this.movie = movie
       }
     )
+  }
+
+  isnull(data){
+    return true;
+  }
+
+  like(){
+    if(this.isLiked){
+      this.isLiked = false;
+    }else{
+      this.isLiked = true;
+    }
   }
 
 

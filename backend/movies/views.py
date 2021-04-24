@@ -8,7 +8,7 @@ from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth.forms import UserCreationForm
 from rest_framework import status
 
-
+#CBV
 class MoviesView(APIView):
     permission_classes = (IsAuthenticated, )
 
@@ -24,6 +24,7 @@ class MoviesView(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+#CBV
 class MoviesDetails(APIView):
     def get(self, request, id):
         try:
@@ -52,24 +53,29 @@ class MoviesDetails(APIView):
         movie.delete()
         return Response(status = status.HTTP_204_NO_CONTENT)
 
+
+#FBV
 @api_view(["GET"])
 def actorsList(request):
     actors = Actor.objects.all()
     serializer = ActorSerizalizer(actors, many =True)
     return Response(serializer.data)
 
+#FBV
 @api_view(['GET'])
 def actorDetail(request, id):
     actor = Actor.objects.get(id = id)
     serializer = ActorSerizalizer(actor, many = False)
     return Response(serializer.date)
 
+#FBV
 @api_view(["GET"])
 def directorList(request):
     directors = Director.objects.all()
     serializer = DirectorSerizalizer(directors, many =True)
     return Response(serializer.data)
 
+#FBV
 @api_view(['GET'])
 def directorDetail(request, id):
     director = Director.objects.get(id = id)
