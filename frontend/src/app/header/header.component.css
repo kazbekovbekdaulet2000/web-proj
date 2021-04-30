@@ -63,6 +63,7 @@
   max-width: 45px;
   max-height: 45px;
   min-width: 45px;
+  overflow: hidden;
   min-height: 45px;
   border-radius: 50%;
   background-color: #ffb4b4;

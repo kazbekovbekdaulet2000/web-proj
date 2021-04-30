@@ -10,6 +10,7 @@ import { AuthService } from '../services/auth.service';
 export class HeaderComponent implements OnInit {
 
   username: string;
+  image: string;
   constructor(public router: Router,
               public auth: AuthService) { } 
   ngOnInit(): void {
@@ -17,6 +18,12 @@ export class HeaderComponent implements OnInit {
       this.auth.profileinfo().subscribe((data)=>{
         this.username = data['email'];
       })
+      this.auth.profileadditional().subscribe((data)=>{
+        this.image = "http://127.0.0.1:8000" + data['image'];
+      })
+    }else{
+      this.username= '';
+      this.image ='';
     }
   }
 

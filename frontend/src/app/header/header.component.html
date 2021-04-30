@@ -15,7 +15,7 @@
         <div class = 'wishlist'><p [routerLink] = '["/wishlist"]'> My wishlist</p></div>
         <a [routerLink] = '["/login"]' *ngIf="!isLoged()"> Login </a>
         <a [routerLink] = '["/account"]' *ngIf="isLoged()"> {{username}}</a>
-        <div class = "icon-holder"> </div>    
+        <div class = "icon-holder"> <img [src] = "image" style= "width: 100%;"></div>    
         
     </div>
 </div>
