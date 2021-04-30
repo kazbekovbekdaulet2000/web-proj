@@ -37,11 +37,11 @@ export interface Director{
 
 export interface Movie{
     id: number;
-    actors: Array<Actor>;  
+    actors: Array<number>;  
     budget: number;
     county: string;
     description: string;
-    director: Array<Director>;
+    director: Array<number>;
     duration: number;
     genres: Array<Genres>;
     likes: number;
@@ -52,11 +52,18 @@ export interface Movie{
 }
 
 export interface UserProfile{
+    id: number;
     email: string;
     name: string;
     surname: string;
     username: string;
     is_superuser: Boolean;
+    profile: number
+}
+
+export interface UserProfileAdditional{
+    id: number;
     image: string;
-    wishlist: Array<string>;
+    user: number;
+    movies: Array<number>;
 }

@@ -20,12 +20,9 @@
                 <span class = "content-name"> Password</span>
             </label> 
         </div>
-        <div class = "enter" (click) = "login()"><h3> Log in </h3></div>
+        <div class = "enter" (click) = "login()" type = "submit"><h3> Log in </h3></div>
         <div class = "forgot-pass"><a [routerLink] = '["/reset-password"]'> Forgot password </a></div>
         <div class = "create-acc"><a [routerLink] = '["/sign-up"]'> Create new account</a></div>
     </form>
 </div>
-
-<div class="row" >
-    <!-- You are logged in as {{ auth.username }}.      Token Expires: {{ auth.token }} -->
-  </div>
+s

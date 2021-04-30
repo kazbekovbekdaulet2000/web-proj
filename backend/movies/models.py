@@ -59,16 +59,16 @@ class Movies(models.Model):
     title = models.CharField(max_length = 100, null = False)
     year = models.IntegerField()
     description = models.CharField(max_length = 1000, null = True)
-    genres = models.ManyToManyField(Genres, blank= True)
+    genres = models.ManyToManyField(Genres, blank= True) #
     budget = models.IntegerField(editable = True, null = True, blank = True)
     rating = models.FloatField(blank = True, null = False)
     duration = models.IntegerField()
     county = models.CharField(max_length = 50, null = False)
     likes = models.IntegerField(blank=True, null = False, default = 0)
     poster = models.URLField(null = False)
-    director = models.ForeignKey(Director, models.CASCADE,null =True, blank = True)
-    actors = models.ManyToManyField(Actor, blank = True)
-    comments = models.ManyToManyField(Comment, blank = True)
+    director = models.ForeignKey(Director, models.CASCADE,null =True, blank = True) #
+    actors = models.ManyToManyField(Actor, blank = True) #
+    comments = models.ManyToManyField(Comment, blank = True) #
     
     def __str__(self):
         return self.title
@@ -80,7 +80,7 @@ class Movies(models.Model):
 
 
 class Profile(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete = models.CASCADE)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, related_name='profile', on_delete = models.CASCADE)
     image = models.ImageField(default='media/user.png', upload_to='media')
     movies = models.ManyToManyField(Movies, blank = True    )    
     

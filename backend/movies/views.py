@@ -52,14 +52,20 @@ class MoviesDetails(APIView):
         return Response(status = status.HTTP_204_NO_CONTENT)
 
 
+
+
+
 #FBV
 @api_view(["GET", "POST"])
 def actorsList(request):
-    actors = Actor.objects.all()
-    serializer = ActorSerizalizer(actors, many =True)
-    return Response(serializer.data)
-
-
+    if request.method =="GET":
+        actors = Actor.objects.all()
+        serializer = ActorSerizalizer(actors, many =True)
+        return Response(serializer.data)
+    elif request.method == "POST":
+        return Response({"ok":True})
+    elif request.method == "PUT":
+        return Response({"ok":True})
 
 #FBV
 @api_view(['GET'])
@@ -85,27 +91,32 @@ def directorDetail(request, id):
 
 @api_view(['GET'])  # CRUD надо сделать
 def user_profile(request):
-    user = request.user
-    return Response({
-        "email": user.email,
-        "name": user.name,
-        "surname": user.surname,
-        "username": user.username,
-        "is_superuser": user.is_superuser,
-        "image": user.profile.image.url,
-        "wishlist": [value.title for value in user.profile.movies.all()],
-
-    })
-
-def wish_list(request):
-    user = request.user
+    if request.method== "GET":
+        user = request.user
+        serializer = UserSerializer(user, many = False)
+        return Response(serializer.data) 
 
 
-def genre_movies(request):
-    return Response(request.body.genre)
-    # movies = Movies.objects.filter(request.data in 'genres')
-    # seri = MoviesSerizalizer(movies)
-    # return Response(seri)
+@api_view(['GET', 'PUT'])
+def profiles(request):
+    try:
+        profile = Profile.objects.get(id = request.user.profile.id)
+    except Movies.DoesNotExist as e:
+        return Response({'message': str(e)}, status = 400)
+
+    if request.method =='GET':
+        serializers = ProfileSerializer(profile, many = False)
+        if(request.user.id == serializers.data['user']):
+            return Response(serializers.data)
+        return Response({"message": "not your profile"})
+
+    elif request.method == 'PUT': 
+        serializer = ProfileSerializer(profile, data = request.user.profile)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response({"error": True}, status = status.HTTP_400_BAD_REQUEST)
+
 
 
 @api_view(['GET'])

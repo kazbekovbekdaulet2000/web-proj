@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import *
 from django.conf import settings
+from django.contrib.auth import get_user_model
 
 class ActorSerizalizer(serializers.ModelSerializer):
     class Meta:
@@ -10,45 +11,32 @@ class ActorSerizalizer(serializers.ModelSerializer):
 class DirectorSerizalizer(serializers.ModelSerializer):
     class Meta:
         model = Director
-        fields ='__all__'
-
-class MoviesSerizalizer(serializers.ModelSerializer):
-    class Meta:
-        model = Movies
-        fields ='__all__'
+        fields = '__all__'
 
 class GenresSerializer(serializers.Serializer):
     name = serializers.CharField(read_only = True)
     description = serializers.CharField(read_only = True)
-    
     def create(self, validated_data):
         return Genres.objects.create(**validated_data)
-
     def update(self, validated_data, instance):
         instance.name = validated_data.get('name', instance.name)
         instance.description = validated_data.get('description', instance.description)
 
 
-# # Auth and User creation
-# class UserSerializer(serializers.HyperlinkedModelSerializer):
-#     class Meta:
-#         model = User
-#         fields = ('username', 'email',)
+class MoviesSerizalizer(serializers.ModelSerializer):
+    # genres = serializers.ManyRelatedField(GenresSerializer)
+    # director = serializers.PrimaryKeyRelatedField(DirectorSerizalizer)
+    class Meta:
+        model = Movies
+        fields ='__all__'
 
-#     def create(self, validated_data):
-#         user = User(
-#             email=validated_data['email'],
-#             username=validated_data['username']
-#         )
-#         user.set_password(validated_data['password'])
-#         user.is_active = True
-#         user.save()
-#         return user
+class ProfileSerializer(serializers.ModelSerializer):
+    class Meta: 
+        model = Profile
+        fields = '__all__'
 
-
-# class UserProfileSerializer(serializers.ModelSerializer):
-#     # movies_list = serializers.PrimaryKeyRelatedField(many = True, read_only=True)
-#     # genre_list = serializers.PrimaryKeyRelatedField(many = True, read_only=True)
-#     class Meta:
-#         model = settings.AUTH_USER_MODEL
-#         fields = ('email', 'name', 'surname', 'username', 'is_superuser')
+class UserSerializer(serializers.ModelSerializer):
+    profile = serializers.PrimaryKeyRelatedField(many = False, queryset = Profile.objects.all())
+    class Meta:
+        model = get_user_model()
+        fields = ('id', 'email', 'name', 'surname', 'username', 'is_superuser', 'profile')

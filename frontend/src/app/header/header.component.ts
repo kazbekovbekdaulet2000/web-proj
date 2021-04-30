@@ -9,10 +9,15 @@ import { AuthService } from '../services/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
+  username: string;
   constructor(public router: Router,
               public auth: AuthService) { } 
   ngOnInit(): void {
-    // console.log('header '+ this.auth);
+    if (this.isLoged()){
+      this.auth.profileinfo().subscribe((data)=>{
+        this.username = data['email'];
+      })
+    }
   }
 
   isLoged(){

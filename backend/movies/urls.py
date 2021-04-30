@@ -11,8 +11,8 @@ urlpatterns = [
     path('actors/<int:id>/', actorDetail),
     path('directors/', directorList),
     path('directors/<int:id>/', directorDetail),
-    path('profile/', user_profile),
-    path('wishlist/', wish_list),
-    path('genres/movie/', genre_movies),
+    path('userpage/', user_profile),
+    path('profiles/', profiles),
+    # path('wishlist/', wish_list),
     # path('movies/filter/', MoviesViewFilter.as_view())
 ]

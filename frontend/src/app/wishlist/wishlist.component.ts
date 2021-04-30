@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AppComponent } from '../app.component';
 import { Location } from '@angular/common';
+import { MoviesComponent } from '../movies/movies.component';
+import { Movie } from '../models';
 
 @Component({
   selector: 'app-wishlist',
@@ -8,8 +10,8 @@ import { Location } from '@angular/common';
   styleUrls: ['./wishlist.component.css']
 })
 export class WishlistComponent implements OnInit {
-
-  constructor(private location: Location,) { }
+  movies: Movie[];
+  constructor(private location: Location) { }
 
   ngOnInit(): void {
   }

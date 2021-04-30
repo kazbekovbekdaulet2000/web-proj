@@ -8,7 +8,11 @@
     column-gap: 30px;
     margin: 0px -50px;
 }
-
+.delete{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}
 
 .blocks{
     flex-wrap: wrap;
@@ -37,8 +41,7 @@
     flex-wrap: wrap;
     justify-content:center;
 }
-
-
+    
 .search{
     width: 200px;
     padding: 5px;
@@ -66,17 +69,12 @@
 }
 
 .poster{
-    filter: blur(1px);
     width: 105%;
     height: 450px;
     object-fit: cover;
     transition: 0.3s;
 }
 
-.poster:hover{
-    /* filter: blur(0px); */
-    transition: 0.3s;
-}
 
 .blur{
     position: absolute;

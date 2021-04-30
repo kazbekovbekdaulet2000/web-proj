@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { Observable, ObservedValueOf, of } from 'rxjs';
-import { AuthToken, AuthData, User, UserProfile} from '../models'
+import { AuthToken, AuthData, User, UserProfile, UserProfileAdditional} from '../models'
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
+  is_superuser = false;
   URL = 'http://127.0.0.1:8000'
   
   constructor(private http: HttpClient) {}
@@ -33,7 +33,11 @@ export class AuthService {
   }
 
   profileinfo():Observable<UserProfile>{
-    return this.http.get<UserProfile>(`${this.URL}/api/profile/`)
+    return this.http.get<UserProfile>(`${this.URL}/api/userpage/`)
+  }
+
+  profileadditional(): Observable<UserProfileAdditional>{
+    return this.http.get<UserProfileAdditional>(`${this.URL}/api/profiles/`)
   }
 
   logout():void {

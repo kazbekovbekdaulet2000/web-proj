@@ -22,6 +22,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JwtModule } from '@auth0/angular-jwt';
 import { AuthInterceptor } from './services/AuthInterceptop';
 import { MovieaddComponent } from './movieadd/movieadd.component';
+import { ActoraddComponent } from './actoradd/actoradd.component';
+import { DirectoraddComponent } from './directoradd/directoradd.component';
 
 
 const comp: Routes =[
@@ -56,6 +58,8 @@ const comp: Routes =[
     ResetpasswordComponent,
     MoviesDetailComponent,
     MovieaddComponent,
+    ActoraddComponent,
+    DirectoraddComponent,
   ],
   imports: [
     BrowserModule,
