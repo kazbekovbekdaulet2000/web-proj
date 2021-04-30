@@ -6,7 +6,11 @@ from .serializer import AccountSerializer
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
-
+from django.conf import settings
+from rest_framework import authentication
+from rest_framework import exceptions
+from rest_framework.authentication import get_authorization_header
+import jwt
 
 #FBV
 @api_view(['POST'])
@@ -34,3 +38,14 @@ def register_view(request):
 #             'user_id': user.pk,
 #             'email': user.email
 #         })
+
+@api_view(['GET'])
+def profile(request):
+    user = request.user
+    return Response({
+        "email": user.email,
+        "name": user.name,
+        "surname": user.surname,
+        "username": user.username
+    })
+

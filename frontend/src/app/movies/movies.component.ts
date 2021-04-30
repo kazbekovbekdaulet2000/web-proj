@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AccountComponent } from '../account/account.component';
 import { Movie } from '../models';
 import { ServiceService } from '../services/service.service'
 @Component({
@@ -8,13 +9,15 @@ import { ServiceService } from '../services/service.service'
 })
 export class MoviesComponent implements OnInit {
   movies: Movie[]; 
-  constructor(private service: ServiceService) { }
+  searchText: string;
+  constructor(private service: ServiceService,
+              private admin: AccountComponent) { }
   ngOnInit(): void {
     this.getMovies()
   }
 
   getMovies(){
-    this.service.getMovies().subscribe(
+    this.service.getMovies(this.searchText).subscribe(
       movies =>{
         this.movies = movies
         console.log(movies)
@@ -22,5 +25,9 @@ export class MoviesComponent implements OnInit {
     )
   }
 
+  isadmin(){
+    return false;
+    // return this.admin.userInfo.is_superuser;
+  }
 
 }

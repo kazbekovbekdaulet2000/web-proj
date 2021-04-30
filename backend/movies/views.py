@@ -10,8 +10,6 @@ from rest_framework import status
 
 #CBV
 class MoviesView(APIView):
-    permission_classes = (IsAuthenticated, )
-
     def get(self, request):
         movies = Movies.objects.all()
         serializer = MoviesSerizalizer(movies, many = True)
@@ -28,7 +26,7 @@ class MoviesView(APIView):
 class MoviesDetails(APIView):
     def get(self, request, id):
         try:
-            movie = Movies.objects.get(movies_id = id)
+            movie = Movies.objects.get(id = id)
         except Movies.DoesNotExist as e:
             return Response({'message': str(e)}, status = 400)
         serializer = MoviesSerizalizer(movie, many = False)
@@ -36,7 +34,7 @@ class MoviesDetails(APIView):
 
     def put(self, request, id):
         try:
-            movie = Movies.objects.get(movies_id = id)
+            movie = Movies.objects.get(id = id)
         except Movies.DoesNotExist as e:
             return Response({'message': str(e)}, status = 400)
         serializer = MoviesSerizalizer(movie, data = request.data)
@@ -47,7 +45,7 @@ class MoviesDetails(APIView):
 
     def delete(self, request, id):
         try:
-            movie = Movies.objects.get(movies_id = id)
+            movie = Movies.objects.get(id = id)
         except Movies.DoesNotExist as e:
             return Response({'message': str(e)}, status = 400)
         movie.delete()
@@ -55,11 +53,13 @@ class MoviesDetails(APIView):
 
 
 #FBV
-@api_view(["GET"])
+@api_view(["GET", "POST"])
 def actorsList(request):
     actors = Actor.objects.all()
     serializer = ActorSerizalizer(actors, many =True)
     return Response(serializer.data)
+
+
 
 #FBV
 @api_view(['GET'])
@@ -81,3 +81,35 @@ def directorDetail(request, id):
     director = Director.objects.get(id = id)
     serializer = DirectorSerizalizer(director, many = False)
     return Response(serializer.date)
+
+
+@api_view(['GET'])  # CRUD надо сделать
+def user_profile(request):
+    user = request.user
+    return Response({
+        "email": user.email,
+        "name": user.name,
+        "surname": user.surname,
+        "username": user.username,
+        "is_superuser": user.is_superuser,
+        "image": user.profile.image.url,
+        "wishlist": [value.title for value in user.profile.movies.all()],
+
+    })
+
+def wish_list(request):
+    user = request.user
+
+
+def genre_movies(request):
+    return Response(request.body.genre)
+    # movies = Movies.objects.filter(request.data in 'genres')
+    # seri = MoviesSerizalizer(movies)
+    # return Response(seri)
+
+
+@api_view(['GET'])
+def topmovies(request):
+    movies = Movies.objects.all().order_by('-likes')[:8]
+    serializer = MoviesSerizalizer(movies, many = True)
+    return Response(serializer.data)

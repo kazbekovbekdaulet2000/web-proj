@@ -1,7 +1,6 @@
 from rest_framework import serializers
 from .models import *
-from django.contrib.auth.models import User, Group
-
+from django.conf import settings
 
 class ActorSerizalizer(serializers.ModelSerializer):
     class Meta:
@@ -14,8 +13,6 @@ class DirectorSerizalizer(serializers.ModelSerializer):
         fields ='__all__'
 
 class MoviesSerizalizer(serializers.ModelSerializer):
-    # actor = serializers.PrimaryKeyRelatedField(many = False) #should be more than one actor
-    # director = serializers.StringRelatedField(many = False)
     class Meta:
         model = Movies
         fields ='__all__'
@@ -32,18 +29,26 @@ class GenresSerializer(serializers.Serializer):
         instance.description = validated_data.get('description', instance.description)
 
 
-# Auth and User creation
-class UserSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = User
-        fields = ('username', 'email',)
+# # Auth and User creation
+# class UserSerializer(serializers.HyperlinkedModelSerializer):
+#     class Meta:
+#         model = User
+#         fields = ('username', 'email',)
 
-    def create(self, validated_data):
-        user = User(
-            email=validated_data['email'],
-            username=validated_data['username']
-        )
-        user.set_password(validated_data['password'])
-        user.is_active = True
-        user.save()
-        return user
+#     def create(self, validated_data):
+#         user = User(
+#             email=validated_data['email'],
+#             username=validated_data['username']
+#         )
+#         user.set_password(validated_data['password'])
+#         user.is_active = True
+#         user.save()
+#         return user
+
+
+# class UserProfileSerializer(serializers.ModelSerializer):
+#     # movies_list = serializers.PrimaryKeyRelatedField(many = True, read_only=True)
+#     # genre_list = serializers.PrimaryKeyRelatedField(many = True, read_only=True)
+#     class Meta:
+#         model = settings.AUTH_USER_MODEL
+#         fields = ('email', 'name', 'surname', 'username', 'is_superuser')

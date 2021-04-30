@@ -21,6 +21,7 @@ import { AuthService } from './services/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JwtModule } from '@auth0/angular-jwt';
 import { AuthInterceptor } from './services/AuthInterceptop';
+import { MovieaddComponent } from './movieadd/movieadd.component';
 
 
 const comp: Routes =[
@@ -35,6 +36,7 @@ const comp: Routes =[
   {path: "reset-password", component: ResetpasswordComponent},
   {path: "wishlist", component: WishlistComponent},
   {path: "account", component: AccountComponent},
+  {path: "movie-creation-form", component: MovieaddComponent},
   {path: "*", component: AppComponent} 
 ]
 
@@ -53,6 +55,7 @@ const comp: Routes =[
     AccountComponent,
     ResetpasswordComponent,
     MoviesDetailComponent,
+    MovieaddComponent,
   ],
   imports: [
     BrowserModule,

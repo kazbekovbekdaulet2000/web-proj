@@ -16,14 +16,6 @@ export interface User{
     password2: string;
 }
 
-    // name = models.CharField(max_length = 50)
-    // birth_date = models.DateField(null = True, blank = True)
-    // death_date = models.DateField(null = True, blank = True)
-    // county = models.CharField(max_length = 50)
-    // person_details = models.CharField(max_length = 1000)
-    // awards = models.CharField(max_length = 50)
-    // award_nominations =models.CharField(max_length = 50)
-    // link
 export interface Actor{
     name: string;
     birth_date: Date;
@@ -44,17 +36,27 @@ export interface Director{
 }
 
 export interface Movie{
-    actors: Actor;
-    budget: BigInteger;
+    id: number;
+    actors: Array<Actor>;  
+    budget: number;
     county: string;
     description: string;
-    director: Director;
+    director: Array<Director>;
     duration: number;
-    genres: Genres;
+    genres: Array<Genres>;
     likes: number;
-    movies_id: number;
     poster: string;
     rating: number;
     title: string;
     year: number;
+}
+
+export interface UserProfile{
+    email: string;
+    name: string;
+    surname: string;
+    username: string;
+    is_superuser: Boolean;
+    image: string;
+    wishlist: Array<string>;
 }

@@ -16,7 +16,7 @@ export class RegistrationComponent implements OnInit {
             private auth:AuthService,
             private router: Router) { }
 
-  public user: any;
+  user: User;
   ngOnInit() {
     if (AppComponent.isLogged()){
       console.log('why');
@@ -28,7 +28,7 @@ export class RegistrationComponent implements OnInit {
       surname: '',
       username: '',
       password: '',
-      password2: '', 
+      password2: '' 
     };
   }
 
@@ -39,7 +39,7 @@ export class RegistrationComponent implements OnInit {
         if (data.response == "successfully registered account"){
           alert(data.response);
           this.goLogin();
-        }else if (data.email == "account with this email already exists."){
+        }if (data.email == "account with this email already exists."){
           alert(data.email);          
         }else if (data.password == "Password must match"){
           alert(data.password);
@@ -47,7 +47,7 @@ export class RegistrationComponent implements OnInit {
         console.log(data);
       },
       (error) => {
-        alert(error.error.password);
+        alert(error.error);
       }
     )
   }

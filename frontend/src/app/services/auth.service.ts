@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { Observable, ObservedValueOf, of } from 'rxjs';
-import { AuthToken, AuthData, User} from '../models'
+import { AuthToken, AuthData, User, UserProfile} from '../models'
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class AuthService {
   constructor(private http: HttpClient) {}
   
   login(user:AuthData): Observable<AuthToken>{
-    return this.http.post<AuthToken>(this.URL+'/api/account/token/', {
+    return this.http.post<AuthToken>(`${this.URL}/api/account/token/`, {
         email: user.username,
         password: user.password
       }
@@ -29,7 +29,11 @@ export class AuthService {
       password: user.password,
       password2: user.password2
     }
-    return this.http.post<any>(this.URL + '/api/account/register/', body)
+    return this.http.post<any>(`${this.URL}/api/account/register/`, body)
+  }
+
+  profileinfo():Observable<UserProfile>{
+    return this.http.get<UserProfile>(`${this.URL}/api/profile/`)
   }
 
   logout():void {

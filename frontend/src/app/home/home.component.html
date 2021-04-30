@@ -1,12 +1,22 @@
-<div class = 'slider'>  
-    <img src= "https://cdn.mos.cms.futurecdn.net/Tmr5QSQ5TsMHNLfjAa5Z9U-1024-80.jpeg.webp">
-    <div class = "slider-blur"></div>
-    <div class = 'text-place'>
-        <h3> Justice League </h3>
-        <p> Zack Snyder </p>
+<div class="slideshow-container" *ngFor = "let movie of movies">
+    <div class="mySlides fade" >
+        <img [src]="movie.poster" class = "poster">
+        <div class = "slider-blur"></div>
+        <div class="text">
+            {{movie.title}}
+        </div>
     </div>
-</div>
+    <a class="prev" (click)="plusSlides(-1)">&#10094;</a>
+    <a class="next" (click)="plusSlides(1)">&#10095;</a>
 
+</div>
+<br>
+
+<div style="text-align:center">
+  <span class="dot" (click)="currentSlide(1)"></span>
+  <span class="dot" (click)="currentSlide(2)"></span>
+  <span class="dot" (click)="currentSlide(3)"></span>
+</div>
 
 <h2 class = "header-text" *ngIf="movies.length != 0"> Top Movies </h2>
 <div class = 'line'  *ngIf="movies.length != 0"> </div>

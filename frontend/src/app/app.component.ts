@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   
-  
+  isadmin = false;
   title = 'Web site';
   public isLoged: Boolean;
   
@@ -23,3 +23,4 @@ export class AppComponent implements OnInit {
     }
   }
 }
+

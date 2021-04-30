@@ -1,15 +1,18 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.conf import settings
+from django.dispatch import receiver
+from django.db.models.signals import post_save
 
 class Actor(models.Model):
-    name = models.CharField(max_length = 50)
+    name = models.CharField(max_length = 255)
+    surname = models.CharField(max_length = 255,null = True)
     birth_date = models.DateField(null = True, blank = True)
     death_date = models.DateField(null = True, blank = True)
     county = models.CharField(max_length = 50)
     person_details = models.CharField(max_length = 1000)
     awards = models.CharField(max_length = 50)
     award_nominations =models.CharField(max_length = 50)
-    link = models.URLField(max_length = 1000, null = True)
+    photo = models.URLField(max_length = 5000, null = True)
     
     def __str__(self):
         return self.name
@@ -31,13 +34,14 @@ class Genres(models.Model):
 
 class Director(models.Model):
     name = models.CharField(max_length = 50)
+    surname = models.CharField(max_length = 255, null = True)
     birth_date = models.DateField(null = True, blank = True)
     death_date = models.DateField(null = True, blank = True)
     county = models.CharField(max_length = 50)
     person_details = models.CharField(max_length = 1000, null= True)
     awards = models.CharField(max_length = 50, null = True)
     award_nominations = models.CharField(max_length = 50, null = True)
-    link = models.URLField(max_length = 1000, null = True)
+    photo = models.URLField(max_length = 5000, null = True)
     
     def __str__(self):
         return self.name
@@ -46,20 +50,25 @@ class Director(models.Model):
         verbose_name = "Director"
         verbose_name_plural = "Directors"
 
+class Comment(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, models.CASCADE, null = True)
+    content = models.TextField(max_length = 1000)
+    date = models.DateTimeField()
+
 class Movies(models.Model):
-    movies_id = models.IntegerField(primary_key= True)
     title = models.CharField(max_length = 100, null = False)
     year = models.IntegerField()
     description = models.CharField(max_length = 1000, null = True)
-    genres = models.ForeignKey(Genres, on_delete = models.SET_NULL, null = True)
+    genres = models.ManyToManyField(Genres, blank= True)
     budget = models.IntegerField(editable = True, null = True, blank = True)
     rating = models.FloatField(blank = True, null = False)
     duration = models.IntegerField()
     county = models.CharField(max_length = 50, null = False)
     likes = models.IntegerField(blank=True, null = False, default = 0)
     poster = models.URLField(null = False)
-    director = models.ForeignKey(Director, models.SET_NULL,null =True, blank = True)
-    actors = models.ForeignKey(Actor, models.SET_NULL, null = True, blank = True)
+    director = models.ForeignKey(Director, models.CASCADE,null =True, blank = True)
+    actors = models.ManyToManyField(Actor, blank = True)
+    comments = models.ManyToManyField(Comment, blank = True)
     
     def __str__(self):
         return self.title
@@ -67,3 +76,23 @@ class Movies(models.Model):
     class Meta: 
         verbose_name = "Movie"
         verbose_name_plural = "Movies"
+
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete = models.CASCADE)
+    image = models.ImageField(default='media/user.png', upload_to='media')
+    movies = models.ManyToManyField(Movies, blank = True    )    
+    
+    @receiver(post_save, sender = settings.AUTH_USER_MODEL)
+    def create_user_profile(sender, instance, created, **kwargs):
+        if created:
+            Profile.objects.create(user = instance)
+    
+    @receiver(post_save, sender = settings.AUTH_USER_MODEL)
+    def save_user_profile(sender, instance, **kwargs):
+        instance.profile.save()
+    
+    def __str__(self):
+        return f'{self.user.username}\'s profile'
+    

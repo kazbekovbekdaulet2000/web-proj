@@ -34,7 +34,7 @@
         </div>
         <div class = 'info-row' *ngIf ='isnull(movie.actors)'>
             <h4> actors :</h4>
-            <h4> {{movie.actors}}</h4>
+            <h4> {{actors[movie.actors].name}}</h4>
         </div>
         <div class = 'info-row' *ngIf ='isnull(movie.rating)'>
             <h4> rating :</h4>

@@ -9,7 +9,6 @@ import { AotCompiler } from '@angular/compiler';
 })
 
 export class ServiceService{
-  
   constructor(private http: HttpClient,
               public auth: AuthService) { 
   let httpOptions = {
@@ -22,13 +21,13 @@ export class ServiceService{
   private apiURL = "http://127.0.0.1:8000/api/" 
 
 
-  getMovies(): Observable<Movie[]>{
-    return this.http.get<Movie[]>(this.apiURL + "movies/");
+  getMovies(searchText: string): Observable<Movie[]>{
+    return this.http.get<Movie[]>(this.apiURL + "movies/" );
   }
 
-  getMovie(movies_id):Observable<Movie>{
-    console.log(movies_id);
-    return this.http.get<Movie>(this.apiURL + "movies/" + movies_id);
+  getMovie(id):Observable<Movie>{
+    console.log(id);
+    return this.http.get<Movie>(this.apiURL + "movies/" + id);
   }
   
   getActors():Observable<Actor[]>{
