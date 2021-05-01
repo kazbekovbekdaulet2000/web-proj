@@ -18,6 +18,18 @@
     </div>
     
     <div class = 'line'> </div>
-    <div class = 'wishlist-item-holder' *ngFor = ''> 
+    <div class = 'wishlist-item-holder' *ngFor = 'let movie of movies'>
+        <div class = "movie-wish">
+            <div class = "movie-image">
+                <img [src] = "movie.poster" style="width: 100%;">
+            </div>
+            <div class = "movie-info">
+                <h2>{{movie.title}} </h2>
+                <h4>{{movie.description}} </h4>
+            </div>
+            <div class = "movie-rating">
+                <h1>{{movie.rating}} / 10</h1>
+            </div>
+        </div> 
     </div>
 </div>

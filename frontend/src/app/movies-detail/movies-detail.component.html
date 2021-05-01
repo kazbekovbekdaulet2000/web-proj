@@ -1,8 +1,8 @@
 <div class = 'photo-holder'>
-    <div class = 'photo'>
+    <div class = 'photo' *ngIf ="movie">
         <img [src]="movie.poster" class = 'poster'>
     </div>
-    <div class = 'movie-info'>
+    <div class = 'movie-info' *ngIf ="movie">
         <div class = 'info-row'>
             <h2> Movie name :</h2>
             <h2> {{movie.title}}</h2>
@@ -34,7 +34,7 @@
         </div>
         <div class = 'info-row' *ngIf ='isnull(movie.actors)'>
             <h4> actors :</h4>
-            <h4> {{actors[movie.actors].name}}</h4>
+            <!-- <h4> {{actors[movie.actors].name}}</h4> -->
         </div>
         <div class = 'info-row' *ngIf ='isnull(movie.rating)'>
             <h4> rating :</h4>

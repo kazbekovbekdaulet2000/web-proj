@@ -12,7 +12,7 @@ urlpatterns = [
     path('directors/', directorList),
     path('directors/<int:id>/', directorDetail),
     path('userpage/', user_profile),
-    path('profiles/', profiles),
+    path('userpage/about/', profiles),
     # path('wishlist/', wish_list),
     # path('movies/filter/', MoviesViewFilter.as_view())
 ]

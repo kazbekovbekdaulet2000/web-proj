@@ -36,7 +36,7 @@ class ProfileSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class UserSerializer(serializers.ModelSerializer):
-    profile = serializers.PrimaryKeyRelatedField(many = False, queryset = Profile.objects.all())
+    # profile = serializers.PrimaryKeyRelatedField(many = False, queryset = Profile.objects.all())
     class Meta:
         model = get_user_model()
-        fields = ('id', 'email', 'name', 'surname', 'username', 'is_superuser', 'profile')
+        fields = ('id', 'email', 'name', 'surname', 'username', 'is_superuser')

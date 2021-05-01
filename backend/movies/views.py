@@ -7,6 +7,7 @@ from .serializers import *
 from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth.forms import UserCreationForm
 from rest_framework import status
+from django.contrib.auth import get_user_model
 
 #CBV
 class MoviesView(APIView):
@@ -89,12 +90,19 @@ def directorDetail(request, id):
     return Response(serializer.date)
 
 
-@api_view(['GET'])  # CRUD надо сделать
+@api_view(['GET','PUT'])  # CRUD надо сделать
 def user_profile(request):
-    if request.method== "GET":
+    if request.method== "GET":           #works
         user = request.user
         serializer = UserSerializer(user, many = False)
-        return Response(serializer.data) 
+        return Response(serializer.data)
+    elif request.method == "PUT":        #works
+        user = request.user
+        serializer = UserSerializer(instance = user, data = request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors)
 
 
 @api_view(['GET', 'PUT'])
@@ -111,11 +119,11 @@ def profiles(request):
         return Response({"message": "not your profile"})
 
     elif request.method == 'PUT': 
-        serializer = ProfileSerializer(profile, data = request.user.profile)
+        serializer = ProfileSerializer(profile, data = request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
-        return Response({"error": True}, status = status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
 
 
 
